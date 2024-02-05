@@ -1,0 +1,68 @@
+Lien où faire les exercices
+
+https://regex101.com/r/tLrzTp/1
+
+************************************************* Niveau débutant **************************************************
+
+1. Rechercher les lettres majuscules et minuscules
+
+[a-z]
+
+2. Rechercher les caractères blancs
+
+\s
+
+3. Rechercher les chiffres
+
+[0-9]
+
+4. Rechercher tous les nombres entiers (suites de chiffres)
+
+\d
+
+5. Rechercher les fin de ligne
+
+$
+
+6. Rechercher le mot "jeune" (cad entouré d'espaces blanc)
+
+jeune
+
+7. Rechercher les mots "jeune" et "tome"
+
+jeune|tome
+
+8. Rechercher toutes les lettres sauf a, e, i, r
+
+
+************************************************* Niveau avancé **************************************************
+
+1. Rechercher tous les nombres (entiers et flottants)
+
+[0-9]*[.]?[0-9]
+
+2. Rechercher les UUID
+Un UUID est composé de la suite suivante :
+- 8 caractères hexa suivi d'un tiret (-)
+- 4 caractères hexa suivi d'un tiret (-)
+- 4 caractères hexa suivi d'un tiret (-)
+- 4 caractères hexa suivi d'un tiret (-)
+- 12 caractères hexa
+Un caractère hexa contient les caractères suivants (0, 1, 2, 3, 4, 5, 6, 7, 8, 9, A, B, C, D, E, F)
+
+[a-f0-9]{8}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{12}
+
+3. Rechercher les 192 emails
+
+[a-z0-9]@[a-z0-9].[a-z]
+
+4. Rechercher les chaines entre quotes
+
+5. Rechercher les 1001 dates au format YYYY-MM-DD dans le texte suivant
+(Pour simplifier, on considère qu'il y a 31 jours dans chaque mois)
+
+[0-9]{4}-[0-9]{2}-[0-9]{2}
+
+6. Rechercher les 69 URLs complètes
+
+[w]{3}.[a-z0-9].[a-z0-9]
