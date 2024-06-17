@@ -8,30 +8,25 @@ let cancel = document.querySelector("#cancel-button");
 let compt = document.querySelector("#billboard span");
 let rocket = document.querySelector("#rocket");
 let main = document.querySelector("main");
-let time = "";
+let timer;
+let count = 10;
 
 /***********************************************************************************/
 /* ********************************** FONCTIONS ************************************/
 /***********************************************************************************/
 
-function compteur () {
-    rocket.src = "images/rocket2.gif";
-    cancel.classList.remove("disabled");
-    let sec = 10;
-    function up() {
-        sec--;
-        console.log(sec);
-        compt.textContent = sec;
-        if(sec > 0) {
-            time = setTimeout(up, 1000);
-        } else {
-            clearTimeout(time);
-            rocket.src = "images/rocket3.gif";
-            rocket.classList.add("tookOff");
-            cancel.classList.add("disabled");
-        }
+function go() {
+    rocket.src = "images/rocket3.gif";
+    rocket.classList.add("tookOff");
+    cancel.classList.add("disabled");
+}
+
+function countDown() {
+    compt.textContent = count;   
+    count--; 
+    if(count == -1 ) { 
+        window.clearInterval(timer);
     }
-    up();
 }
 
 function star () {
@@ -59,16 +54,25 @@ function star () {
 }
 
 function decolage() {
+    cancel.classList.remove("disabled");
     fire.classList.add("disabled");
-    compteur();
+    setTimeout(go, count * 1000);
+    countDown();
+    timer = window.setInterval(countDown, 1000);
+    rocket.src = "images/rocket2.gif";
+}
+
+function cancelDecolage() {
+    window.clearInterval(timer);
+    fire.classList.remove("disabled");
+    rocket.src = "images/rocket1.png";
+    cancel.classList.add("disabled");
 }
 star();
-
-
 
 
 /************************************************************************************/
 /* ******************************** CODE PRINCIPAL **********************************/
 /************************************************************************************/
 fire.addEventListener('click', decolage);
-cancel.removeEventListener('click', decolage);
+cancel.addEventListener('click', cancelDecolage);
